@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import OrderForm from './components/OrderForm';
@@ -8,9 +8,6 @@ import OrderModal from './components/OrderModal';
 import AddProductForm from './components/AddProductForm';
 import { PRODUCTS } from './data/products';
 import './App.css';
-import { create } from 'zustand'
-import { useShallow } from 'zustand/react/shallow'
-
 
 
 
@@ -19,16 +16,65 @@ function App() {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState(PRODUCTS);
   const [viewOrder, setViewOrder] = useState(null);
+const [totalRevenue, setTotalRevenue] = useState(0);
 
-  const addOrder = (orderData) => {
-    const newOrder = {
-      id: Date.now(),
-      ...orderData,
-      status: 'En attente',
-      date: new Date().toISOString()
-    };
-    setOrders(prev => [newOrder, ...prev]);
+const getTotal = (items) => {
+  try {
+    let sum = 0;
+    items.forEach(item => {
+      const product = products.find(p => p.id === item.productId);
+      if (product) {
+        sum += product.price * item.quantity;
+      }
+    });
+    return sum;
+  } catch (error) {
+    console.log(error);
+    return 0;
+  }
+};
+
+useEffect(() => {
+  let total = 0;
+
+  orders.forEach(order => {
+    if (order.items && Array.isArray(order.items)) {
+      total += getTotal(order.items);
+    }
+  });
+
+  setTotalRevenue(total);
+}, [orders, products]);
+
+
+const addOrder = (orderData) => {
+  const idMap = {
+    1: 101,
+    2: 102,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8
   };
+
+  const fixedItems = orderData.items.map(item => ({
+    ...item,
+    productId: idMap[item.productId] || item.productId
+  }));
+
+  const newOrder = {
+    id: Date.now(),
+    ...orderData,
+    items: fixedItems, // use fixed IDs
+    status: 'En attente',
+    date: new Date().toISOString()
+  };
+
+  setOrders(prev => [newOrder, ...prev]);
+};
+
 
   const addProduct = (productData) => {
     const newProduct = {
@@ -92,7 +138,7 @@ function App() {
         {}
         <div className="p-8">
           {activeTab === 'dashboard' && (
-            <Dashboard orders={orders} productsCount={products.length} />
+            <Dashboard orders={orders} productsCount={products.length} totalRevenue = {totalRevenue} />
           )}
 
           {activeTab === 'new' && (
@@ -120,6 +166,7 @@ function App() {
               onDeleteOrder={deleteOrder}
             />
           )}
+          
         </div>
       </div>
 

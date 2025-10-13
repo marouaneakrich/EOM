@@ -1,6 +1,6 @@
 export const PRODUCTS = [
-  { id: 1, name: 'Huile d\'olive 750ml', price: 85 },
-  { id: 2, name: 'Huile d\'olive 1L', price: 110 },
+  { id: 101, name: 'Huile d\'olive 750ml', price: 85 },
+  { id: 102, name: 'Huile d\'olive 1L', price: 110 },
   { id: 3, name: 'Olives nature', price: 45 },
   { id: 4, name: 'Olives marinées', price: 50 },
   { id: 5, name: 'Tapenade 250g', price: 35 },
