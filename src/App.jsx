@@ -8,6 +8,11 @@ import OrderModal from './components/OrderModal';
 import AddProductForm from './components/AddProductForm';
 import { PRODUCTS } from './data/products';
 import './App.css';
+import { create } from 'zustand'
+import { useShallow } from 'zustand/react/shallow'
+
+
+
 
 function App() {
   const [activeTab, setActiveTab] = useState('orders');
@@ -109,6 +114,8 @@ function App() {
           {activeTab === 'orders' && (
             <OrdersList 
               orders={orders} 
+                            products={products}
+
               onViewOrder={setViewOrder}
               onDeleteOrder={deleteOrder}
             />

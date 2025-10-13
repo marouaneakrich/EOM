@@ -4,12 +4,22 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
   if (!order) return null;
 
   const getTotal = (items) => {
-    return items.reduce((sum, item) => {
-      const product = products.find(p => p.id === item.productId);
-      if (!product) return sum;
-      return sum + (product.price * item.quantity);
-    }, 0);
-  };
+    try {
+       let sum = 0;
+
+  items.forEach(item => {
+    const product = products.find(p => p.id === item.productId);
+    if (product) {
+      sum += product.price * item.quantity;
+    }
+  });
+
+  return sum;
+    } catch (error) {
+      console.log(error)
+    }
+
+};
 
   return (
     <div 
@@ -76,7 +86,7 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
 
         <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '16px' }}>Products</h3>
-          {order.items.map((item, i) => {
+          {/* {order.items.map((item, i) => {
             const product = products.find(p => p.id === item.productId);
             if (!product) return null;
             return (
@@ -94,7 +104,7 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
                 </span>
               </div>
             );
-          })}
+          })} */}
           <div style={{ 
             borderTop: '1px solid #e5e7eb', 
             marginTop: '16px', 

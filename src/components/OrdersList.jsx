@@ -1,13 +1,20 @@
 import React from 'react';
-import { PRODUCTS } from '../data/products';
 
-const OrdersList = ({ orders, onViewOrder, onDeleteOrder }) => {
-  const getTotal = (items) => {
-    return items.reduce((sum, item) => {
-      const product = PRODUCTS.find(p => p.id === item.productId);
-      return sum + (product.price * item.quantity);
-    }, 0);
-  };
+
+const OrdersList = ({ orders, onViewOrder, onDeleteOrder,products }) => {
+const getTotal = (items) => {
+  let sum = 0;
+
+  items.forEach(item => {
+    const product = products.find(p => p.id === item.productId);
+    if (product) {
+      sum += product.price * item.quantity;
+    }
+  });
+
+  return sum;
+};
+
 
   const statusColors = {
     'En attente': { bg: '#fef3c7', color: '#92400e' },
