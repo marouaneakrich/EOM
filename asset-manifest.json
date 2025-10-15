@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/EOM/static/css/main.9d286544.css",
-    "main.js": "/EOM/static/js/main.82b94bf2.js",
+    "main.js": "/EOM/static/js/main.be6bfd23.js",
     "index.html": "/EOM/index.html",
     "main.9d286544.css.map": "/EOM/static/css/main.9d286544.css.map",
-    "main.82b94bf2.js.map": "/EOM/static/js/main.82b94bf2.js.map"
+    "main.be6bfd23.js.map": "/EOM/static/js/main.be6bfd23.js.map"
   },
   "entrypoints": [
     "static/css/main.9d286544.css",
-    "static/js/main.82b94bf2.js"
+    "static/js/main.be6bfd23.js"
   ]
 }
