@@ -90,8 +90,8 @@ function App() {
       };
 
 const performDeleteProduct = (id) => {
-            setOrders(prev => prev.filter(o => o.id !== id));
-            toast.success('Order deleted successfully!');
+            setProducts(prev => prev.filter(p => p.id !== id));
+            toast.success('Product deleted successfully!');
       };
 
       const deleteProduct= (id) => {
