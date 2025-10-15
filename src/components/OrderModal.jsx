@@ -5,24 +5,26 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
 
   const getTotal = (items) => {
     try {
-       let sum = 0;
-
-  items.forEach(item => {
-    const product = products.find(p => p.id === item.productId);
-    if (product) {
-      sum += product.price * item.quantity;
-    }
-  });
-
-  return sum;
+      if (!products || !Array.isArray(products)) {
+        return 0;
+      }
+      let sum = 0;
+      items.forEach(item => {
+        const product = products.find(p => String(p.id) === String(item.productId));
+        if (product) {
+          sum += Number(product.price) * Number(item.quantity);
+        }
+      });
+      return sum;
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      return 0;
     }
+  };
 
-};
 
   return (
-    <div 
+    <div
       style={{
         position: 'fixed',
         top: 0,
@@ -38,7 +40,7 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
       }}
       onClick={onClose}
     >
-      <div 
+      <div
         style={{
           backgroundColor: 'white',
           borderRadius: '8px',
@@ -48,17 +50,17 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
         }}
         onClick={e => e.stopPropagation()}
       >
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'flex-start', 
-          marginBottom: '24px' 
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '24px'
         }}>
           <div>
             <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Order Details</h2>
             <p style={{ color: '#6b7280' }}>#{order.id}</p>
           </div>
-          <button 
+          <button
             onClick={onClose}
             style={{
               border: 'none',
@@ -86,28 +88,9 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
 
         <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '16px' }}>Products</h3>
-          {/* {order.items.map((item, i) => {
-            const product = products.find(p => p.id === item.productId);
-            if (!product) return null;
-            return (
-              <div 
-                key={i} 
-                style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
-                  padding: '8px 0' 
-                }}
-              >
-                <span>{product.name} × {item.quantity}</span>
-                <span style={{ fontWeight: 'bold' }}>
-                  {product.price * item.quantity} MAD
-                </span>
-              </div>
-            );
-          })} */}
-          <div style={{ 
-            borderTop: '1px solid #e5e7eb', 
-            marginTop: '16px', 
+          <div style={{
+            borderTop: '1px solid #e5e7eb',
+            marginTop: '16px',
             paddingTop: '16px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -115,7 +98,8 @@ const OrderModal = ({ order, onClose, onStatusChange, products }) => {
             fontWeight: 'bold'
           }}>
             <span>Total</span>
-            <span style={{ color: '#22c55e' }}>{getTotal(order.items)} MAD</span>
+            <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#22c55e' }}>
+              {getTotal(order.items)} MAD</span>
           </div>
         </div>
 
