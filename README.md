@@ -45,15 +45,11 @@ It was built using **React Native** and **Expo Router**.
 
 
 
-## 📱 Screens
+## 📸 Screens
 
-### 🏠 Home Screen
-
-![Home Screen](https://i.postimg.cc/gwHKXSVV/Screenshot-20251024-115159-Expo-Go.jpg)
-
-###  Menu Screen
-
-![Menu Screen](https://i.postimg.cc/Z9xLB78c/Screenshot-20251024-115204-Expo-Go.jpg)
+| 🏠 Home Screen | ☕ Menu Screen | 📋 Details Screen |
+|----------------|----------------|-------------------|
+| <img src="https://i.postimg.cc/gwHKXSVV/Screenshot-20251024-115159-Expo-Go.jpg" width="250"/> | <img src="https://i.postimg.cc/Z9xLB78c/Screenshot-20251024-115204-Expo-Go.jpg" width="250"/> | <img src="https://i.postimg.cc/52mDczv7/Screenshot-20251024-115420-Expo-Go.jpg" width="250"/> |
 
 
 
