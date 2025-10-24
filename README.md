@@ -59,9 +59,10 @@ It was built using **React Native** and **Expo Router**.
    This project is for learning and demonstration purposes only .
    Feel Free to use or modify it for your own projects.
 
+## 👨‍💻 Developers
 
-
-
+- **marouane akrich Wissal ouboujemaa** – Frontend Developer / UI Designer  
+- **[AromaSoft]** – React Native Developer  
 
 
 
