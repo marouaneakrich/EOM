@@ -51,6 +51,9 @@ It was built using **React Native** and **Expo Router**.
 
 ![Home Screen](https://i.postimg.cc/gwHKXSVV/Screenshot-20251024-115159-Expo-Go.jpg)
 
+###  Menu Screen
+
+![Menu Screen](https://i.postimg.cc/Z9xLB78c/Screenshot-20251024-115204-Expo-Go.jpg)
 
 
 
