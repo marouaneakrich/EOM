@@ -47,8 +47,8 @@ It was built using **React Native** and **Expo Router**.
 
 
 
--Home Screen
-![Home Screen](https://i.postimg.cc/gwHKXSVV/Screenshot-20251024-115159-Expo-Go.jpg)
+
+-Home Screen![Home Screen](https://i.postimg.cc/gwHKXSVV/Screenshot-20251024-115159-Expo-Go.jpg)
 
 
 
